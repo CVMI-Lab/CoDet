@@ -1,0 +1,6 @@
+_BASE_: "Base_OVLVIS_R5021k_4x.yaml"
+MODEL:
+  ROI_BOX_HEAD:
+    USE_ZEROSHOT_CLS: True
+DATASETS:
+  TRAIN: ("lvis_v1_train_norare",)

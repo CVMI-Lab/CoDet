@@ -1,0 +1,17 @@
+mss
+ftfy
+lvis
+nltk
+regex
+wandb
+einops
+fasttext
+dataclasses
+scikit-learn
+opencv-python
+timm==0.5.4
+Pillow==9.5.0
+numpy==1.22.0
+mmcv-full==1.7.1
+git+https://github.com/openai/CLIP.git
+

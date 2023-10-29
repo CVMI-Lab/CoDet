@@ -1,0 +1,51 @@
+_BASE_: "Base_OVLVIS_R5021k_4x.yaml"
+MODEL:
+  WITH_CAPTION: True
+  SYNC_CAPTION_BATCH: True
+  CAP_BATCH_RATIO: 8
+  ROI_BOX_HEAD:
+    IMAGE_LOSS_WEIGHT: 0.2
+    ADD_IMAGE_BOX: True
+    USE_ZEROSHOT_CLS: True
+    ZEROSHOT_WEIGHT_PATH: 'datasets/metadata/cc3m_clip_a+cname.npy'
+    DETECTION_WEIGHT_PATH: 'datasets/metadata/lvis_v1_clip_a+cname.npy'
+    IMAGE_LABEL_LOSS: 'concept_grouping'
+    ADD_FEATURE_TO_PROP: True
+    USE_FED_LOSS: True
+    CAT_FREQ_PATH: 'datasets/lvis/lvis_v1_train_norare_cat_info.json'
+  BACKBONE:
+    NAME: build_vitdet
+  ROI_HEADS:
+    IN_FEATURES: ["p2", "p3", "p4", "p5"]
+  WEIGHTS: "models/eva02_L_pt_m38m_p14to16.pt"
+SOLVER:
+  MAX_ITER: 90000
+  IMS_PER_BATCH: 64
+  BASE_LR: 0.0002
+  WARMUP_ITERS: 1000
+  WARMUP_FACTOR: 0.001
+  BACKBONE_MULTIPLIER: 0.25
+DATASETS:
+  TRAIN: ("lvis_v1_train_norare","cc3m_v1_train_tags_4706")
+DATALOADER:
+  SAMPLER_TRAIN: "MultiDatasetConceptSampler"
+  DATASET_RATIO: [1, 8]
+  USE_DIFF_BS_SIZE: True
+  DATASET_BS: [2, 16]
+  DATASET_INPUT_SIZE: [1280, 640]
+  USE_RFS: [True, False]
+  DATASET_INPUT_SCALE: [[0.1, 2.0], [0.5, 1.5]]
+  FILTER_EMPTY_ANNOTATIONS: False
+  MULTI_DATASET_GROUPING: True
+  DATASET_ANN: ['box', 'captiontag']
+  NUM_WORKERS: 8
+  CONCEPT_GROUP_SIZE: 8
+INPUT:
+  TRAIN_SIZE: 1280
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1024
+  TEST_INPUT_TYPE: "default"
+WITH_IMAGE_LABELS: True
+FIND_UNUSED_PARAM: True
+TEST:
+  EVAL_PERIOD: 10000

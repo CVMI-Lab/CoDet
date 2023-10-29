@@ -1,0 +1,43 @@
+_BASE_: "Base_OVCOCO_R50_1x.yaml"
+MODEL:
+  WEIGHTS: "models/BoxSup_OVCOCO_CLIP_R50_1x.pth"
+  WITH_CAPTION: True
+  SYNC_CAPTION_BATCH: True
+  ROI_BOX_HEAD:
+    ADD_IMAGE_BOX: True
+    USE_ZEROSHOT_CLS: True
+    ZEROSHOT_WEIGHT_PATH: 'datasets/metadata/cococap_clip_a+cname.npy'
+    DETECTION_WEIGHT_PATH: 'datasets/metadata/coco_clip_a+cname.npy'
+    IMAGE_LABEL_LOSS: 'concept_grouping'
+    ADD_FEATURE_TO_PROP: True
+    WS_NUM_PROPS: 32
+    USE_TEXT_GUIDANCE: True
+SOLVER:
+  USE_CUSTOM_SOLVER: True
+  CUSTOM_MULTIPLIER: 0.2
+  CUSTOM_MULTIPLIER_NAME: ['fc1', 'fc2']
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.02
+  STEPS: (60000, 80000)
+  MAX_ITER: 90000
+DATASETS:
+  TRAIN: ("coco_zeroshot_train_oriorder", "coco_caption_train_tags_634")
+INPUT:
+  CUSTOM_AUG: ResizeShortestEdge
+  MIN_SIZE_TRAIN_SAMPLING: range
+  MIN_SIZE_TRAIN: (800, 800)
+DATALOADER:
+  SAMPLER_TRAIN: "MultiDatasetConceptSampler"
+  DATASET_RATIO: [1, 4]
+  USE_DIFF_BS_SIZE: True
+  DATASET_BS: [2, 8]
+  USE_RFS: [False, False]
+  DATASET_MIN_SIZES: [[800, 800], [400, 400]]
+  DATASET_MAX_SIZES: [1333, 667]
+  FILTER_EMPTY_ANNOTATIONS: False
+  MULTI_DATASET_GROUPING: True
+  DATASET_ANN: ['box', 'captiontag']
+  NUM_WORKERS: 8
+  CONCEPT_GROUP_SIZE: 2
+WITH_IMAGE_LABELS: True
+SEED: 10528394
