@@ -1,4 +1,4 @@
-# Co-Occurrence Guided Region-Word Alignment for Open-Vocabulary Detection
+# CoDet: Co-Occurrence Guided Region-Word Alignment for Open-Vocabulary Object Detection
 
 <p align="center"> <img src='docs/teaser.jpg' align="center"> </p>
 
