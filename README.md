@@ -109,10 +109,10 @@ Please remember to re-scale the learning rate accordingly if you are using a dif
 
 If you find this repo useful for your research, please consider citing our paper:
 ```
-@article{ma2023codet,
+@inproceedings{ma2023codet,
   title={CoDet: Co-Occurrence Guided Region-Word Alignment for Open-Vocabulary Object Detection},
   author={Ma, Chuofan and Jiang, Yi and Wen, Xin and Yuan, Zehuan and Qi, Xiaojuan},
-  journal={arXiv preprint arXiv:2310.16667},
+  booktitle={Advances in Neural Information Processing Systems},
   year={2023}
 }
 ```
