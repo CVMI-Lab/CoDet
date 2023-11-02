@@ -12,6 +12,7 @@
 - #### State-of-the-art performance on open-vocabulary LVIS
 - #### Deployed with modern visual foudation models
 
+[Use CoDet to automatically label images for training a small, fine-tuned model](https://github.com/autodistill/autodistill-codet)
 
 ## Installation
 Setup environment
