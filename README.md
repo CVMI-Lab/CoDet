@@ -7,12 +7,11 @@
 > *NeurIPS 2023 ([https://arxiv.org/abs/2310.16667](https://arxiv.org/abs/2310.16667))*
 
 ## Features
-- #### Train an open-vocabulary detector with web-scale image-text pairs
-- #### Align regions and words by co-occurrence instead of region-text similarity
-- #### State-of-the-art performance on open-vocabulary LVIS
-- #### Deployed with modern visual foudation models
-
-[Use CoDet to automatically label images for training a small, fine-tuned model](https://github.com/autodistill/autodistill-codet)
+- Train an open-vocabulary detector with web-scale image-text pairs
+- Align regions and words by co-occurrence instead of region-text similarity
+- State-of-the-art performance on open-vocabulary LVIS
+- Deployed with modern visual foudation models
+- Intergated with [roboflow](https://github.com/autodistill/autodistill-codet) to automatically label images for training a small, fine-tuned model
 
 ## Installation
 Setup environment
