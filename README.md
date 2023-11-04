@@ -13,6 +13,11 @@
 - Deployed with modern visual foudation models
 - Intergated with [roboflow](https://github.com/autodistill/autodistill-codet) to automatically label images for training a small, fine-tuned model
 
+## Results
+<p align="center">
+<img src="docs/ov_lvis_results.png" width=60%>
+<p>
+
 ## Installation
 Setup environment
 ```shell script
