@@ -5,6 +5,8 @@
 > [**CoDet: Co-Occurrence Guided Region-Word Alignment for Open-Vocabulary Object Detection**](https://arxiv.org/abs/2310.16667),               
 > Chuofan Ma, Yi Jiang, Xin Wen, Zehuan Yuan, Xiaojuan Qi   
 > *NeurIPS 2023 ([https://arxiv.org/abs/2310.16667](https://arxiv.org/abs/2310.16667))*
+>
+> [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/codet-co-occurrence-guided-region-word/open-vocabulary-object-detection-on-lvis-v1-0)](https://paperswithcode.com/sota/open-vocabulary-object-detection-on-lvis-v1-0?p=codet-co-occurrence-guided-region-word)
 
 ## Features
 - Train an open-vocabulary detector with web-scale image-text pairs
@@ -13,7 +15,7 @@
 - Deployed with modern visual foudation models
 - Intergated with [roboflow](https://github.com/autodistill/autodistill-codet) to automatically label images for training a small, fine-tuned model
 
-## Results
+## Results 
 <p align="center">
 <img src="docs/ov_lvis_results.png" width=60%>
 <p>
