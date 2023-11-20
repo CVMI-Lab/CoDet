@@ -252,9 +252,9 @@ class CoDetCascadeROIHeads(CascadeROIHeads):
         box_features = self.box_pooler(features, pool_boxes)
         box_features = _ScaleGradient.apply(box_features, 1.0 / self.num_cascade_stages)
         box_features = self.box_head[stage](box_features)
-        box_features_copy = self.box_predictor[stage].cls_score.linear(box_features)
         if self.add_feature_to_prop:
-            feats_per_image = box_features_copy.split(
+            proposal_features = self.box_predictor[stage].cls_score.linear(box_features)
+            feats_per_image = proposal_features.split(
                 [len(p) for p in proposals], dim=0)
             for feat, p in zip(feats_per_image, proposals):
                 p.feat = feat
