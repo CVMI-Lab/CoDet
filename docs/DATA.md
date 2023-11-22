@@ -41,6 +41,12 @@ python tools/remove_lvis_rare.py --ann datasets/lvis/lvis_v1_train.json
 
 This will generate `datasets/lvis/lvis_v1_train_norare.json`.
 
+Then generate `datasets/lvis/lvis_v1_train_norare_cat_info.json` by running
+
+```
+python tools/get_lvis_cat_info.py --ann datasets/lvis/lvis_v1_train_norare.json --add_freq
+```
+
 ### COCO Caption
 Download the parsed [caption tags](https://drive.google.com/file/d/1crYRxaL3atzAhL2Qut6Ojzzd2V3uXziV/view?usp=sharing) and put it under `datasets/coco/annotations/`.
 
