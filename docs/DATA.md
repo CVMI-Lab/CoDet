@@ -33,6 +33,11 @@ python tools/get_coco_zeroshot_oriorder.py --data_path datasets/coco/zero-shot/i
 python tools/get_coco_zeroshot_oriorder.py --data_path datasets/coco/zero-shot/instances_val2017_all_2.json
 ```
 
+And process the category infomation:
+```
+python tools/get_lvis_cat_info.py --ann datasets/coco/zero-shot/instances_train2017_seen_2_oriorder.py
+```
+
 Next, prepare the open-vocabulary LVIS training set using 
 
 ```
