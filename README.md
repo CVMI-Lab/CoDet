@@ -7,7 +7,8 @@
 > *NeurIPS 2023 ([https://arxiv.org/abs/2310.16667](https://arxiv.org/abs/2310.16667))*    
 > *Project page ([https://codet-ovd.github.io](https://codet-ovd.github.io))*
 > 
-> [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/codet-co-occurrence-guided-region-word/open-vocabulary-object-detection-on-lvis-v1-0)](https://paperswithcode.com/sota/open-vocabulary-object-detection-on-lvis-v1-0?p=codet-co-occurrence-guided-region-word)
+> [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/codet-co-occurrence-guided-region-word-1/open-vocabulary-object-detection-on-lvis-v1-0)](https://paperswithcode.com/sota/open-vocabulary-object-detection-on-lvis-v1-0?p=codet-co-occurrence-guided-region-word-1)
+
 
 ## Features
 - Train an open-vocabulary detector with web-scale image-text pairs
@@ -15,6 +16,7 @@
 - State-of-the-art performance on open-vocabulary LVIS
 - Deployed with modern visual foudation models
 - Intergated with [roboflow](https://github.com/autodistill/autodistill-codet) to automatically label images for training a small, fine-tuned model
+
 
 
 
