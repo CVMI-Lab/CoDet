@@ -73,7 +73,18 @@ python tools/download_cc.py --ann datasets/cc3m/GCC-training.tsv --save_image_pa
 ~~~
 
 This creates `datasets/cc3m/train_image_info.json`.
+Then extract and filter tags with
+~~~
+pip install nltk
+pip install SceneGraphParser
+python -m spacy download en_core_web_trf
+
+python tools/concept_extract.py --anno_file datasets/cc3m/train_image_info.json
+python tools/concept_filter.py --anno_file datasets/cc3m/train_image_info.json --output_file datasets/cc3m/train_image_info_tags_4706.json
+~~~
+<!--
 Then download the parsed [caption tags](https://drive.google.com/file/d/1l9elOs00jDeXQA80qtmMXauuCz3Jf2ok/view?usp=sharing) and put it under `datasets/cc3m/`.
+-->
 
 ### Objects365
 Download Objects365 (v2) from the website. We only need the validation set in this project:
