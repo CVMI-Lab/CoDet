@@ -95,10 +95,10 @@ class ZeroShotClassifier(nn.Module):
             zs_weight = F.normalize(zs_weight, p=2, dim=0) \
                 if self.norm_weight else zs_weight
         else:
-            if self.training and ann_type == 'box':
-                zs_weight = self.detection_weight
-            else:
+            if self.training and ann_type != 'box':
                 zs_weight = self.zs_weight
+            else:
+                zs_weight = self.detection_weight
         if self.norm_weight:
             x = self.norm_temperature * F.normalize(x, p=2, dim=1)
         x = torch.mm(x, zs_weight)

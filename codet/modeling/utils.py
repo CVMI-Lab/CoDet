@@ -45,5 +45,5 @@ def reset_cls_test(model, cls_path, num_classes):
         zs_weight = F.normalize(zs_weight, p=2, dim=0)
     zs_weight = zs_weight.to(model.device)
     # for k in range(len(model.roi_heads.box_predictor)):
-    del model.module.roi_heads.box_predictor.cls_score.zs_weight
-    model.module.roi_heads.box_predictor.cls_score.zs_weight = zs_weight
+    del model.module.roi_heads.box_predictor.cls_score.detection_weight
+    model.module.roi_heads.box_predictor.cls_score.detection = zs_weight
