@@ -76,6 +76,16 @@ $CoDet/datasets/
 
 
 ## Inference
+To test with custom images/videos, run
+```shell script
+python demo.py --config-file [config_file] --input [your_image_file] --output [output_file_path] --vocabulary lvis --opts MODEL.WEIGHTS [model_weights]
+```
+
+Or you can customize the test vocabulary, e.g.,
+```shell script
+python demo.py --config-file [config_file] --input [your_image_file] --output [output_file_path] --vocabulary custom --custom_vocabulary headphone,webcam,paper,coffe --confidence-threshold 0.3 --opts MODEL.WEIGHTS [model_weights]
+```
+
 To evaluate a pre-trained model, run
 ```shell script
 python train_net.py --num-gpus $GPU_NUM --config-file /path/to/config --eval-only MODEL.WEIGHTS /path/to/ckpt
