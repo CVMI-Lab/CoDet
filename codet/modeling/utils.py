@@ -28,7 +28,6 @@ def get_fed_loss_inds(gt_classes, num_sample_cats, C, weight=None):
     return appeared
 
 
-
 def reset_cls_test(model, cls_path, num_classes):
     model.module.roi_heads.num_classes = num_classes
     if type(cls_path) == str:
@@ -45,5 +44,25 @@ def reset_cls_test(model, cls_path, num_classes):
         zs_weight = F.normalize(zs_weight, p=2, dim=0)
     zs_weight = zs_weight.to(model.device)
     # for k in range(len(model.roi_heads.box_predictor)):
-    del model.module.roi_heads.box_predictor.cls_score.detection_weight
-    model.module.roi_heads.box_predictor.cls_score.detection_weight = zs_weight
+    del model.module.roi_heads.box_predictor.cls_score.zs_weight
+    model.module.roi_heads.box_predictor.cls_score.zs_weight = zs_weight
+
+
+def reset_cls_infer(model, cls_path, num_classes):
+    model.roi_heads.num_classes = num_classes
+    if type(cls_path) == str:
+        print('Resetting zs_weight', cls_path)
+        zs_weight = torch.tensor(
+            np.load(cls_path),
+            dtype=torch.float32).permute(1, 0).contiguous() # D x C
+    else:
+        zs_weight = cls_path
+    zs_weight = torch.cat(
+        [zs_weight, zs_weight.new_zeros((zs_weight.shape[0], 1))],
+        dim=1) # D x (C + 1)
+    if model.roi_heads.box_predictor[0].cls_score.norm_weight:
+        zs_weight = F.normalize(zs_weight, p=2, dim=0)
+    zs_weight = zs_weight.to(model.device)
+    for k in range(len(model.roi_heads.box_predictor)):
+        del model.roi_heads.box_predictor[k].cls_score.detection_weight
+        model.roi_heads.box_predictor[k].cls_score.detection_weight = zs_weight

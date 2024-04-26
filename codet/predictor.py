@@ -11,7 +11,7 @@ from detectron2.engine.defaults import DefaultPredictor
 from detectron2.utils.video_visualizer import VideoVisualizer
 from detectron2.utils.visualizer import ColorMode, Visualizer
 
-from .modeling.utils import reset_cls_test
+from .modeling.utils import reset_cls_infer
 
 
 def get_clip_embeddings(vocabulary, prompt='a '):
@@ -65,7 +65,7 @@ class VisualizationDemo(object):
             self.predictor = AsyncPredictor(cfg, num_gpus=num_gpu)
         else:
             self.predictor = DefaultPredictor(cfg)
-        reset_cls_test(self.predictor.model, classifier, num_classes)
+        reset_cls_infer(self.predictor.model, classifier, num_classes)
 
     def run_on_image(self, image):
         """
